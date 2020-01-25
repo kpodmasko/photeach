@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { faTextWidth, faPhotoVideo } from '@fortawesome/free-solid-svg-icons';
 import Page from '../Page';
 import Group from '../Group';
