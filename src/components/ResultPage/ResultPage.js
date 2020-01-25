@@ -1,7 +1,8 @@
 import React from 'react';
+import Page from '../Page';
 
 function ResultPage() {
-  return <div>Result page</div>;
+  return <Page>ResultPage</Page>;
 }
 
 export default ResultPage;

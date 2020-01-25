@@ -1,0 +1,11 @@
+.page__container {
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(to bottom, #0bf, #066bff);
+}
+
+.page__content {
+  width: 80%;
+  background-color: #fff;
+  min-height: 100vh;
+}

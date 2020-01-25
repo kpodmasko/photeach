@@ -1,7 +1,8 @@
 import React from 'react';
+import Page from '../Page';
 
 function PhotoPage() {
-  return <div>Photo page</div>;
+  return <Page>PhotoPage</Page>;
 }
 
 export default PhotoPage;

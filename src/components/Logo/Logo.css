@@ -1,0 +1,16 @@
+.logo__container {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  height: 100px;
+}
+
+.logo__item {
+  height: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  .logo__container {
+    height: 50px;
+  }
+}

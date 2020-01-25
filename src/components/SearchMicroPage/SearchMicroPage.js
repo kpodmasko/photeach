@@ -1,7 +1,8 @@
 import React from 'react';
+import Page from '../Page';
 
 function SearchMicroPage() {
-  return <div>SearchMicro page</div>;
+  return <Page>SearchMicroPage</Page>;
 }
 
 export default SearchMicroPage;

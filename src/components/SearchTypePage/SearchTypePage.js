@@ -1,7 +1,8 @@
 import React from 'react';
+import Page from '../Page';
 
 function SearchTypePage() {
-  return <div>SearchType page</div>;
+  return <Page>SearchTypePage</Page>;
 }
 
 export default SearchTypePage;
