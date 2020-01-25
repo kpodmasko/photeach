@@ -1,6 +1,9 @@
 import React from 'react';
 import Page from '../Page';
 import FooterLink from '../FooterLink';
+import Input from '../Input';
+import Group from '../Group';
+import ApproveLink from '../ApproveLink';
 
 const description = `
         Введите слово
@@ -13,7 +16,10 @@ function SearchTypePageFooter() {
 function SearchTypePage() {
   return (
     <Page description={description} footer={<SearchTypePageFooter />}>
-      INPUT
+      <Group vertical>
+        <Input />
+        <ApproveLink to="/photo" />
+      </Group>
     </Page>
   );
 }
