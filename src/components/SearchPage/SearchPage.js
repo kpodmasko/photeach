@@ -18,7 +18,11 @@ function SearchPage() {
     <Page description={description} footer={<SearchPageFooter />}>
       <Group>
         <IconLink icon={faKeyboard} to="/search/type" />
-        <IconLink icon={faMicrophone} to="/search/micro" />
+        <IconLink
+          icon={faMicrophone}
+          to="/search/micro"
+          onClick={e => e.preventDefault()}
+        />
       </Group>
     </Page>
   );

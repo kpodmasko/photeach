@@ -17,8 +17,12 @@ function PhotoPage() {
   return (
     <Page description={description} footer={<PhotoPageFooter />}>
       <Group>
-        <IconLink icon={faCamera} to="/photo/camera" />
         <IconLink icon={faUpload} to="/photo/upload" />
+        <IconLink
+          icon={faCamera}
+          to="/photo/camera"
+          onClick={e => e.preventDefault()}
+        />
       </Group>
     </Page>
   );
