@@ -1,0 +1,16 @@
+.icon__container {
+  width: 150px;
+  height: 150px;
+  background: #0bf;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  align-items: center;
+  border: 2px solid #066bff;
+  font-size: 75px;
+}
+
+.icon__container--hover:hover {
+  cursor: pointer;
+}
