@@ -14,3 +14,27 @@
 .icon__container--hover:hover {
   cursor: pointer;
 }
+
+@media screen and (max-width: 800px) {
+  .icon__container {
+    width: 100px;
+    height: 100px;
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .icon__container {
+    width: 80px;
+    height: 80px;
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .icon__container {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+  }
+}
