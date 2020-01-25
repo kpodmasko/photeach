@@ -1,0 +1,13 @@
+.group__container {
+  width: 100%;
+  display: flex;
+}
+
+.group__container--horizontal {
+  justify-content: space-around;
+}
+
+.group__container--vertical {
+  flex-direction: column;
+  align-items: center;
+}
