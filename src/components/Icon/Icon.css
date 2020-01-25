@@ -9,6 +9,7 @@
   align-items: center;
   border: 2px solid #066bff;
   font-size: 75px;
+  margin: 5px;
 }
 
 .icon__container--hover:hover {
