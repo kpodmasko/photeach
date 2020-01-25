@@ -9,3 +9,40 @@
   background-color: #fff;
   min-height: 100vh;
 }
+
+.page__description_container {
+  display: flex;
+  justify-content: center;
+  padding-left: 15%;
+  padding-right: 15%;
+  height: 100px;
+  align-items: center;
+  overflow: scroll;
+}
+
+.page__description {
+  font-size: 20px;
+  text-align: center;
+}
+
+.page__main {
+  display: flex;
+  justify-content: center;
+  padding-left: 15%;
+  padding-right: 15%;
+  height: calc(100% - 220px);
+  align-items: center;
+  overflow: scroll;
+}
+
+@media screen and (max-width: 800px) {
+  .page__main {
+    height: calc(100% - 145px);
+  }
+  .page__description_container {
+    height: 75px;
+  }
+  .page__description {
+    font-size: 15px;
+  }
+}
