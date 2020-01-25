@@ -1,0 +1,21 @@
+.link {
+  text-decoration: none;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.link__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link--disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.5;
+}
+
+.link--hover:hover {
+  opacity: 1;
+}
