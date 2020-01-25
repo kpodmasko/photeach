@@ -1,19 +1,24 @@
 import React from 'react';
 import { faCamera, faUpload } from '@fortawesome/free-solid-svg-icons';
 import Page from '../Page';
-import Icon from '../Icon';
+import IconLink from '../IconLink';
 import Group from '../Group';
+import FooterLink from '../FooterLink';
 
 const description = `
         Вы имеете возможность сделать фотографию или выбрать ее из галлереи
     `;
 
+function PhotoPageFooter() {
+  return <FooterLink to="/">НАЗАД</FooterLink>;
+}
+
 function PhotoPage() {
   return (
-    <Page description={description}>
+    <Page description={description} footer={<PhotoPageFooter />}>
       <Group>
-        <Icon icon={faCamera} link="/photo/camera" />
-        <Icon icon={faUpload} link="/photo/upload" />
+        <IconLink icon={faCamera} to="/photo/camera" />
+        <IconLink icon={faUpload} to="/photo/upload" />
       </Group>
     </Page>
   );

@@ -1,19 +1,24 @@
 import React from 'react';
 import { faKeyboard, faMicrophone } from '@fortawesome/free-solid-svg-icons';
 import Page from '../Page';
-import Icon from '../Icon';
+import IconLink from '../IconLink';
 import Group from '../Group';
+import FooterLink from '../FooterLink';
 
 const description = `
         Вы имеете возможность вписать ввести слово или произнести его в микрофон
     `;
 
+function SearchPageFooter() {
+  return <FooterLink to="/">НАЗАД</FooterLink>;
+}
+
 function SearchPage() {
   return (
-    <Page description={description}>
+    <Page description={description} footer={<SearchPageFooter />}>
       <Group>
-        <Icon icon={faKeyboard} link="/search/type" />
-        <Icon icon={faMicrophone} link="/search/micro" />
+        <IconLink icon={faKeyboard} to="/search/type" />
+        <IconLink icon={faMicrophone} to="/search/micro" />
       </Group>
     </Page>
   );
