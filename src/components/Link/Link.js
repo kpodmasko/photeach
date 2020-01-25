@@ -2,7 +2,7 @@ import React from 'react';
 import { Link as RRDLink } from 'react-router-dom';
 import './Link.css';
 
-function Link({ to, children, disabled, containerStyle, linkStyle }) {
+function Link({ to, children, disabled, containerStyle, linkStyle, onClick }) {
   const baseClassName = 'link';
   const disabledClassName = disabled ? `${baseClassName}--disabled` : ``;
   const hoverClassName = `${baseClassName}--hover`;
@@ -14,7 +14,12 @@ function Link({ to, children, disabled, containerStyle, linkStyle }) {
 
   return (
     <div className="link__container" style={containerStyle}>
-      <RRDLink to={to} style={linkStyle} className={totalClassName}>
+      <RRDLink
+        to={to}
+        style={linkStyle}
+        className={totalClassName}
+        onClick={onClick}
+      >
         {children}
       </RRDLink>
     </div>
