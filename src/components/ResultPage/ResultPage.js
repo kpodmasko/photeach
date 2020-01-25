@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Page from '../Page';
 import FooterLink from '../FooterLink';
+import { AppStateContext } from '../../appState';
+import RedirectToMain from '../RedirectToMain';
 
 const description = `
         Результат
@@ -11,10 +13,15 @@ function ResultPageFooter() {
 }
 
 function ResultPage() {
-  return (
+  const [appState] = useContext(AppStateContext);
+  const { searchWord } = appState;
+
+  return searchWord ? (
     <Page description={description} footer={<ResultPageFooter />}>
       RESULT
     </Page>
+  ) : (
+    <RedirectToMain />
   );
 }
 

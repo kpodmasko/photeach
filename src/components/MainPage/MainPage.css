@@ -1,0 +1,12 @@
+.main_page__search_word {
+  font-size: 50px;
+}
+
+.main_page__search_word_container {
+  display: flex;
+  width: 100%;
+  overflow: scroll;
+  height: 164px;
+  justify-content: center;
+  align-items: center;
+}
