@@ -4,6 +4,8 @@ import { history } from '../../helpers';
 import RedirectToMain from '../RedirectToMain';
 import MainPage from '../MainPage';
 import PhotoPage from '../PhotoPage';
+import PhotoCameraPage from '../PhotoCameraPage';
+import PhotoUploadPage from '../PhotoUploadPage';
 import SearchPage from '../SearchPage';
 import SearchTypePage from '../SearchTypePage';
 import SearchMicroPage from '../SearchMicroPage';
@@ -15,6 +17,8 @@ function App() {
       <Switch>
         <Route path="/" exact component={MainPage} />
         <Route path="/photo" exact component={PhotoPage} />
+        <Route path="/photo/camera" exact component={PhotoCameraPage} />
+        <Route path="/photo/upload" exact component={PhotoUploadPage} />
         <Route path="/search" exact component={SearchPage} />
         <Route path="/search/type" exact component={SearchTypePage} />
         <Route path="/search/micro" exact component={SearchMicroPage} />
