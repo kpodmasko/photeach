@@ -20,7 +20,7 @@ function SearchTypePage() {
   const [searchWord, setSearchWord] = useState(searchWordFromContext);
 
   function handleApproveLinkClick(event) {
-    if (searchWord && searchWord !== searchWordFromContext) {
+    if (searchWord) {
       dispatch({
         type: SET_SEARCH_WORD,
         payload: searchWord

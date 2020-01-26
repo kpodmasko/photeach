@@ -6,7 +6,37 @@
   display: flex;
   width: 100%;
   overflow: scroll;
-  height: 164px;
+  height: 150px;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 800px) {
+  .main_page__search_word_container {
+    height: 100px;
+  }
+
+  .main_page__search_word {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main_page__search_word_container {
+    height: 80px;
+  }
+
+  .main_page__search_word {
+    font-size: 35px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .main_page__search_word_container {
+    height: 60px;
+  }
+
+  .main_page__search_word {
+    font-size: 30px;
+  }
 }
