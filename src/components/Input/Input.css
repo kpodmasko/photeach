@@ -9,3 +9,24 @@
   outline: none;
   border-width: 3px;
 }
+
+@media screen and (max-width: 800px) {
+  .input {
+    height: 90px;
+    font-size: 35px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .input {
+    height: 80px;
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .input {
+    height: 70px;
+    font-size: 23px;
+  }
+}
