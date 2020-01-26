@@ -34,11 +34,15 @@ function MainPage() {
           <IconLink icon={faTextWidth} to="/search" />
           <IconLink icon={faPhotoVideo} to="/photo" />
         </Group>
-        <Group vertical>
-          <div className="main_page__search_word_container">
-            <span className="main_page__search_word">{searchWord}</span>
-          </div>
-        </Group>
+        {searchWord ? (
+          <Group vertical>
+            <div className="main_page__search_word_container">
+              <span className="main_page__search_word">{searchWord}</span>
+            </div>
+          </Group>
+        ) : (
+          ''
+        )}
       </Group>
     </Page>
   );
