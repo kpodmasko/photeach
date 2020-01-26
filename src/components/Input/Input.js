@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useAutoFocus } from '../../hooks';
 import './Input.css';
 
 function Input({ onChange, value: valueProp }) {
   const [inputValue, setInputValue] = useState(valueProp);
+  const inputRef = useRef(null);
+  useAutoFocus(inputRef);
 
   function handleChange(event) {
     const { value } = event.target;
@@ -20,6 +23,7 @@ function Input({ onChange, value: valueProp }) {
 
   return (
     <input
+      ref={inputRef}
       className="input input--focus"
       onChange={handleChange}
       value={inputValue}
