@@ -1,6 +1,9 @@
 import React from 'react';
 import Page from '../Page';
 import FooterLink from '../FooterLink';
+import File from '../File';
+import Group from '../Group';
+import ApproveLink from '../ApproveLink';
 
 const description = `
         Загрузите фотографию
@@ -13,7 +16,10 @@ function PhotoUploadPageFooter() {
 function PhotoUploadPage() {
   return (
     <Page description={description} footer={<PhotoUploadPageFooter />}>
-      UPLOAD
+      <Group vertical>
+        <File />
+        <ApproveLink />
+      </Group>
     </Page>
   );
 }
