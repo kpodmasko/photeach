@@ -1,3 +1,4 @@
 .result_page__image {
   display: none;
+  max-height: 500px;
 }
