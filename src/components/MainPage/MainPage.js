@@ -46,7 +46,7 @@ function MainPage() {
       <Group>
         <Group vertical>
           <IconLink icon={faTextWidth} to="/search" />
-          <IconLink icon={faPhotoVideo} to="/photo" />
+          <IconLink icon={faPhotoVideo} to="/photo/upload" />
         </Group>
         {hasSomeInfoForSearching ? (
           <Group vertical>
