@@ -6,9 +6,7 @@ import Group from '../Group';
 import ApproveLink from '../ApproveLink';
 import { AppStateContext, SET_SEARCH_WORD } from '../../appState';
 
-const description = `
-        Введите слово
-    `;
+const description = `Введите слово`;
 
 function SearchTypePageFooter() {
   return <FooterLink to="/search">НАЗАД</FooterLink>;
@@ -19,23 +17,22 @@ function SearchTypePage() {
   const { searchWord: searchWordFromContext } = appState;
   const [searchWord, setSearchWord] = useState(searchWordFromContext);
 
-  function handleApproveLinkClick(event) {
-    if (searchWord) {
-      dispatch({
-        type: SET_SEARCH_WORD,
-        payload: searchWord
-      });
-    } else {
-      // cancel redirect to photo selecting
-      event.preventDefault();
-    }
+  function handleApproveLinkClick() {
+    dispatch({
+      type: SET_SEARCH_WORD,
+      payload: searchWord
+    });
   }
 
   return (
     <Page description={description} footer={<SearchTypePageFooter />}>
       <Group vertical>
         <Input onChange={setSearchWord} value={searchWord} />
-        <ApproveLink to="/photo" onClick={handleApproveLinkClick} />
+        <ApproveLink
+          to="/photo/upload"
+          onClick={handleApproveLinkClick}
+          disabled={!searchWord}
+        />
       </Group>
     </Page>
   );
