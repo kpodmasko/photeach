@@ -39,16 +39,16 @@ function MainPage() {
       description={description}
       footer={<MainPageFooter disabled={!hasAllInfoForSearching} />}
     >
-      <Group>
+      {hasSomeInfoForSearching ? (
         <Group vertical>
-          <IconLink icon={faTextWidth} to="/search/type" />
-          <IconLink icon={faPhotoVideo} to="/photo/upload" />
-        </Group>
-        {hasSomeInfoForSearching ? (
-          <Group vertical>
+          <Group>
+            <IconLink icon={faTextWidth} to="/search/type" />
             <div className="main_page__info_container">
               <span className="main_page__search_word">{searchWord}</span>
             </div>
+          </Group>
+          <Group>
+            <IconLink icon={faPhotoVideo} to="/photo/upload" />
             <div className="main_page__info_container">
               <Image
                 src={imageValue}
@@ -57,10 +57,15 @@ function MainPage() {
               />
             </div>
           </Group>
-        ) : (
-          ''
-        )}
-      </Group>
+        </Group>
+      ) : (
+        <Group>
+          <Group vertical>
+            <IconLink icon={faTextWidth} to="/search/type" />
+            <IconLink icon={faPhotoVideo} to="/photo/upload" />
+          </Group>
+        </Group>
+      )}
     </Page>
   );
 }
