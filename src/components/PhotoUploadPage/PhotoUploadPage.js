@@ -45,7 +45,7 @@ function PhotoUploadPage() {
           file={origin}
           label="Загрузить картинку"
         />
-        <Image src={value} name={name} className="photo_upload_page__image" />
+        <Image src={value} alt={name} className="photo_upload_page__image" />
         <ApproveLink
           to="/main"
           onClick={handleApproveLinkClick}

@@ -1,0 +1,20 @@
+.preloader {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  z-index: 2;
+  user-select: none;
+}
+
+@keyframes rotate360 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.preloader__icon {
+  animation: 2s rotate360 infinite linear;
+}

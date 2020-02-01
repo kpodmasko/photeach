@@ -1,13 +1,14 @@
-import React, { useContext, useEffect, useRef } from 'react';
-import { createWorker } from 'tesseract.js';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import Tesseract from 'tesseract.js';
 import Page from '../Page';
 import FooterLink from '../FooterLink';
-import { AppStateContext } from '../../appState';
+import { AppStateContext, initialAppState } from '../../appState';
 import RedirectToMain from '../RedirectToMain';
+import Preloader from '../Preloader';
+import Image from '../Image';
+import './ResultPage.css';
 
-const description = `
-        Результат
-    `;
+const description = `Результат`;
 
 function ResultPageFooter() {
   return <FooterLink to="/">НАЗАД</FooterLink>;
@@ -17,15 +18,22 @@ function ResultPage() {
   const canvasRef = useRef(null);
   const imgRef = useRef(null);
   const [appState] = useContext(AppStateContext);
+  const { searchWord, searchImage } = appState;
+  const { name: imageName, value: imageValue } = searchImage;
   const {
-    searchWord,
-    searchImage: { image }
-  } = appState;
+    name: initialImageName,
+    value: initialImageValue
+  } = initialAppState.searchImage;
+  const hasSearchImage =
+    `${imageName}${imageValue}` !== `${initialImageName}${initialImageValue}`;
+  const hasAllInfoForSearching = !!(searchWord && hasSearchImage);
+  const [loading, setLoading] = useState(false);
 
-  function resultData(res) {
+  function markSearchWords(ocrResult) {
     const ioctx = canvasRef.current.getContext('2d');
     ioctx.drawImage(imgRef.current, 0, 0);
-    res.words.forEach(function(w) {
+
+    ocrResult.words.forEach(function(w) {
       if (w.text !== searchWord) {
         return;
       }
@@ -45,54 +53,48 @@ function ResultPage() {
       ioctx.stroke();
     });
   }
-  useEffect(() => {
-    canvasRef.current.width = imgRef.current.width;
-    canvasRef.current.height = imgRef.current.height;
 
-    const worker = createWorker({
-      logger: m => console.log(m)
-    });
+  useEffect(
+    function() {
+      (async function() {
+        if (!searchWord || !searchImage) {
+          return;
+        }
 
-    (async () => {
-      await worker.load();
-      await worker.loadLanguage('eng');
-      await worker.initialize('eng');
-      const res = await worker.recognize(image);
-      console.log(res);
-      const { data } = res;
+        canvasRef.current.width = imgRef.current.width;
+        canvasRef.current.height = imgRef.current.height;
 
-      resultData(data);
-      await worker.terminate();
-    })();
-  }, []);
+        setLoading(true);
 
-  return searchWord ? (
-    <Page description={description} footer={<ResultPageFooter />}>
-      <canvas
-        ref={canvasRef}
-        style={{
-          marginTop: '0',
-          // position: 'absolute',
-          maxWidth: '100%',
-          boxSizing: 'border-box'
-          // padding: '20px'
-        }}
-      />
-      <img
-        ref={imgRef}
-        src={image}
-        style={{
-          maxWidth: '100%',
-          boxSizing: 'border-box',
-          // padding: '20px',
-          marginTop: '0',
-          border: '1px solid #ddd',
-          display: 'none'
-        }}
-      />
-    </Page>
-  ) : (
-    <RedirectToMain />
+        const { data: ocrResult } = await Tesseract.recognize(
+          imageValue,
+          'eng'
+        );
+        markSearchWords(ocrResult);
+
+        setLoading(false);
+      })();
+    },
+    [searchWord, searchImage]
+  );
+
+  return (
+    <>
+      {loading && <Preloader />}
+      {hasAllInfoForSearching ? (
+        <Page description={description} footer={<ResultPageFooter />}>
+          <canvas ref={canvasRef} />
+          <Image
+            ref={imgRef}
+            className="result_page__image"
+            src={imageValue}
+            alt={imageName}
+          />
+        </Page>
+      ) : (
+        <RedirectToMain />
+      )}
+    </>
   );
 }
 
