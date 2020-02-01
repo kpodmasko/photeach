@@ -1,0 +1,9 @@
+.photo_upload_page__image {
+  max-height: 300px;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.photo_upload_page__file {
+  margin-bottom: 20px;
+}
