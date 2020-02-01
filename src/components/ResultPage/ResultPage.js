@@ -24,6 +24,7 @@ function ResultPage() {
 
   function resultData(res) {
     const ioctx = canvasRef.current.getContext('2d');
+    ioctx.drawImage(imgRef.current, 0, 0);
     res.words.forEach(function(w) {
       if (w.text !== searchWord) {
         return;
@@ -32,9 +33,11 @@ function ResultPage() {
       const b = w.bbox;
 
       ioctx.strokeWidth = 10;
+      ioctx.fillStyle = 'rgba(0,0,0,0.5)';
 
-      // ioctx.strokeStyle = 'red';
-      // ioctx.strokeRect(b.x0, b.y0, b.x1 - b.x0, b.y1 - b.y0);
+      ioctx.strokeStyle = 'red';
+      ioctx.strokeRect(b.x0, b.y0, b.x1 - b.x0, b.y1 - b.y0);
+      ioctx.fillRect(b.x0, b.y0, b.x1 - b.x0, b.y1 - b.y0);
       ioctx.beginPath();
       ioctx.moveTo(w.baseline.x0, w.baseline.y0);
       ioctx.lineTo(w.baseline.x1, w.baseline.y1);
@@ -65,35 +68,28 @@ function ResultPage() {
 
   return searchWord ? (
     <Page description={description} footer={<ResultPageFooter />}>
-      <div
+      <canvas
+        ref={canvasRef}
         style={{
-          position: 'relative',
-          flex: '1'
-          // border: '20px solid transparent'
+          marginTop: '0',
+          // position: 'absolute',
+          maxWidth: '100%',
+          boxSizing: 'border-box'
+          // padding: '20px'
         }}
-      >
-        <canvas
-          ref={canvasRef}
-          style={{
-            marginTop: '0',
-            position: 'absolute',
-            maxWidth: '100%',
-            boxSizing: 'border-box'
-            // padding: '20px'
-          }}
-        />
-        <img
-          ref={imgRef}
-          src={image}
-          style={{
-            maxWidth: '100%',
-            boxSizing: 'border-box',
-            // padding: '20px',
-            marginTop: '0',
-            border: '1px solid #ddd'
-          }}
-        />
-      </div>
+      />
+      <img
+        ref={imgRef}
+        src={image}
+        style={{
+          maxWidth: '100%',
+          boxSizing: 'border-box',
+          // padding: '20px',
+          marginTop: '0',
+          border: '1px solid #ddd',
+          display: 'none'
+        }}
+      />
     </Page>
   ) : (
     <RedirectToMain />
