@@ -1,1 +1,3 @@
 export const SET_SEARCH_WORD = 'SET_SEARCH_WORD';
+
+export const SET_SEARCH_IMAGE = 'SET_SEARCH_IMAGE';

@@ -2,6 +2,12 @@ import React, { useState, useRef } from 'react';
 import Group from '../Group';
 import './File.css';
 
+/**
+ * TODO: change from file to image
+ * TODO: refactor image config naming
+ * TODO: check handleChange state setting
+ */
+
 function toBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -11,11 +17,13 @@ function toBase64(file) {
   });
 }
 
-function File() {
+function File({ onChange, imageConfig }) {
+  const { image, imageName } = imageConfig;
   const fileRef = useRef(null);
   // coma is needed as there is splitting in render
-  const [file, setFile] = useState(',');
-  const [fileName, setFileName] = useState('');
+  const [file, setFile] = useState(image);
+  const [fileName, setFileName] = useState(imageName);
+  const isOnOnlyShowMode = !onChange;
 
   async function handleChange() {
     const fileConfig = fileRef.current.files[0];
@@ -23,6 +31,10 @@ function File() {
 
     setFileName(fileConfig.name);
     setFile(fileWithBase64);
+    onChange({
+      image: fileWithBase64,
+      imageName: fileConfig.name
+    });
   }
 
   function handleButtonClick(e) {
@@ -35,15 +47,17 @@ function File() {
   return (
     <div className="file__container">
       <Group>
-        <div className="file__upload_button_container">
-          <button
-            type="button"
-            className="file__upload_button"
-            onClick={handleButtonClick}
-          >
-            Загрузить картинку
-          </button>
-        </div>
+        {!isOnOnlyShowMode && (
+          <div className="file__upload_button_container">
+            <button
+              type="button"
+              className="file__upload_button"
+              onClick={handleButtonClick}
+            >
+              Загрузить картинку
+            </button>
+          </div>
+        )}
         {file.length > 1 && (
           <div className="file__uploaded_image_container">
             <img src={file} className="file__uploaded_image" alt={fileName} />
