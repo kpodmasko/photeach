@@ -33,8 +33,8 @@ function MainPage() {
     image: initialImage,
     imageName: initialImageName
   } = initialAppState.searchImage;
-  const hasSearchImage =
-    `${image}${imageName}` !== `${initialImage}${initialImageName}`;
+  const hasSearchImage = true;
+  // `${image}${imageName}` !== `${initialImage}${initialImageName}`;
   const hasSomeInfoForSearching = !!(searchWord || hasSearchImage);
   const hasAllInfoForSearching = !!(searchWord && hasSearchImage);
 
