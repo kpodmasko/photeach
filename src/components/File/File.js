@@ -18,11 +18,11 @@ function toBase64(file) {
 }
 
 function File({ onChange, imageConfig }) {
-  const { image, imageName } = imageConfig;
+  const { name, value } = imageConfig;
   const fileRef = useRef(null);
   // coma is needed as there is splitting in render
-  const [file, setFile] = useState(image);
-  const [fileName, setFileName] = useState(imageName);
+  const [file, setFile] = useState(value);
+  const [fileName, setFileName] = useState(name);
   const isOnOnlyShowMode = !onChange;
 
   async function handleChange() {

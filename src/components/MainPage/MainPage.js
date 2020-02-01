@@ -28,13 +28,13 @@ function MainPageFooter({ disabled }) {
 function MainPage() {
   const [appState] = useContext(AppStateContext);
   const { searchWord, searchImage } = appState;
-  const { image, imageName } = searchImage;
+  const { name: imageName, value: imageValue } = searchImage;
   const {
-    image: initialImage,
-    imageName: initialImageName
+    name: initialImageName,
+    value: initialImageValue
   } = initialAppState.searchImage;
-  const hasSearchImage = true;
-  // `${image}${imageName}` !== `${initialImage}${initialImageName}`;
+  const hasSearchImage =
+    `${imageName}${imageValue}` !== `${initialImageName}${initialImageValue}`;
   const hasSomeInfoForSearching = !!(searchWord || hasSearchImage);
   const hasAllInfoForSearching = !!(searchWord && hasSearchImage);
 
