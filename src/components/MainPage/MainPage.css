@@ -2,7 +2,11 @@
   font-size: 50px;
 }
 
-.main_page__search_word_container {
+.main_page__search_image {
+  max-height: 100%;
+}
+
+.main_page__info_container {
   display: flex;
   width: 100%;
   overflow: scroll;
@@ -12,7 +16,7 @@
 }
 
 @media screen and (max-width: 800px) {
-  .main_page__search_word_container {
+  .main_page__info_container {
     height: 100px;
   }
 
@@ -22,7 +26,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .main_page__search_word_container {
+  .main_page__info_container {
     height: 80px;
   }
 
@@ -32,7 +36,7 @@
 }
 
 @media screen and (max-width: 450px) {
-  .main_page__search_word_container {
+  .main_page__info_container {
     height: 60px;
   }
 

@@ -4,7 +4,7 @@ import Page from '../Page';
 import Group from '../Group';
 import FooterLink from '../FooterLink';
 import IconLink from '../IconLink';
-import File from '../File';
+import Image from '../Image';
 import { AppStateContext, initialAppState } from '../../appState';
 import './MainPage.css';
 
@@ -12,10 +12,6 @@ const description = `
         Данное приложение позволяет искать слова по фотографии.\n
         Для этого требуется ввести слово и загрузить фотографию.\n
     `;
-
-/**
- * TODO: check after other completing
- */
 
 function MainPageFooter({ disabled }) {
   return (
@@ -50,13 +46,15 @@ function MainPage() {
         </Group>
         {hasSomeInfoForSearching ? (
           <Group vertical>
-            <div className="main_page__search_word_container">
+            <div className="main_page__info_container">
               <span className="main_page__search_word">{searchWord}</span>
             </div>
-            <div className="main_page__search_word_container">
-              <span className="main_page__search_word">
-                <File imageConfig={searchImage} />
-              </span>
+            <div className="main_page__info_container">
+              <Image
+                src={imageValue}
+                alt={imageName}
+                className="main_page__search_image"
+              />
             </div>
           </Group>
         ) : (
